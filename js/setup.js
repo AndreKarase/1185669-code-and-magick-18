@@ -1,5 +1,7 @@
 'use strict';
 
+var WIZARDS_NUMBER = 4;
+
 var NAMES = [
   'Иван',
   'Хуан Себастьян',
@@ -48,27 +50,14 @@ var randomData = function (data) {
   return data[index];
 };
 
-var wizards = [{
-  name: randomData(NAMES) + ' ' + randomData(SURNAMES),
-  coatColor: randomData(COAT_COLORS),
-  eyesColor: randomData(EYES_COLORS)
-},
-{
-  name: randomData(NAMES) + ' ' + randomData(SURNAMES),
-  coatColor: randomData(COAT_COLORS),
-  eyesColor: randomData(EYES_COLORS)
-},
-{
-  name: randomData(NAMES) + ' ' + randomData(SURNAMES),
-  coatColor: randomData(COAT_COLORS),
-  eyesColor: randomData(EYES_COLORS)
-},
-{
-  name: randomData(NAMES) + ' ' + randomData(SURNAMES),
-  coatColor: randomData(COAT_COLORS),
-  eyesColor: randomData(EYES_COLORS)
+var wizards = [];
+for (var i = 0; i < WIZARDS_NUMBER; i++) {
+  wizards[i] = {
+    name: randomData(NAMES) + ' ' + randomData(SURNAMES),
+    coatColor: randomData(COAT_COLORS),
+    eyesColor: randomData(EYES_COLORS)
+  };
 }
-];
 
 var similarWizardTemplate = document.querySelector('#similar-wizard-template')
   .content
@@ -85,7 +74,7 @@ var renderWizard = function (wizard) {
 };
 
 var wizardElements = [];
-for (var i = 0; i < wizards.length; i++) {
+for (i = 0; i < wizards.length; i++) {
   wizardElements[i] = renderWizard(wizards[i]);
 }
 
