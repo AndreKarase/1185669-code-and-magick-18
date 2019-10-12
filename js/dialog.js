@@ -85,6 +85,13 @@
     changeColor(fireball, window.setup.FIREBALL_COLORS, fireballInput);
   });
 
+  var form = userDialog.querySelector('.setup-wizard-form');
+
+  form.addEventListener('submit', function (evt) {
+    window.backend.save(new FormData(form), closePopup);
+    evt.preventDefault();
+  });
+
   var dialogCoords;
   var dialogHandle = userDialog.querySelector('.upload');
 
